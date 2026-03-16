@@ -1,0 +1,59 @@
+// @ts-check
+import { defineConfig } from 'astro/config';
+import starlight from '@astrojs/starlight';
+
+// https://astro.build/config
+export default defineConfig({
+	integrations: [
+		starlight({
+			title: 'archcore',
+			logo: {
+				light: './src/assets/logo-light.png',
+				dark: './src/assets/logo-dark.png',
+			},
+			description: 'System Context Platform — keeps humans and AI in sync with your system',
+			social: [
+				{ icon: 'github', label: 'GitHub', href: 'https://github.com/archcore-ai/cli' },
+				{ icon: 'discord', label: 'Discord', href: 'https://discord.gg/5YC8pdjD' },
+				{ icon: 'x.com', label: 'X', href: 'https://x.com/archcore_ai' },
+				{ icon: 'telegram', label: 'Telegram', href: 'https://t.me/archcore_ai' },
+			],
+			customCss: ['./src/styles/custom.css'],
+			sidebar: [
+				{
+					label: 'Getting Started',
+					items: [
+						{ label: 'Introduction', slug: '' },
+						{ label: 'Quick Start', slug: 'getting-started/quick-start' },
+					],
+				},
+				{
+					label: 'Core Concepts',
+					items: [
+						{ label: 'How It Works', slug: 'concepts/how-it-works' },
+						{ label: 'Document Types', slug: 'concepts/document-types' },
+						{ label: 'Directory Structure', slug: 'concepts/directory-structure' },
+						{ label: 'Relations', slug: 'concepts/relations' },
+					],
+				},
+				{
+					label: 'Integrations',
+					items: [
+						{ label: 'MCP Server', slug: 'integrations/mcp-server' },
+						{ label: 'Supported Agents', slug: 'integrations/supported-agents' },
+						{ label: 'Hooks', slug: 'integrations/hooks' },
+					],
+				},
+				{
+					label: 'Reference',
+					items: [
+						{ label: 'CLI Commands', slug: 'reference/cli-commands' },
+						{ label: 'Document Format', slug: 'reference/document-format' },
+						{ label: 'Configuration', slug: 'reference/configuration' },
+						{ label: 'MCP Tools', slug: 'reference/mcp-tools' },
+					],
+				},
+			],
+		}),
+	],
+});

@@ -1,0 +1,117 @@
+---
+title: Quick Start
+description: Install Archcore and set up your first project in 2 minutes
+---
+
+## Install
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+<Tabs>
+  <TabItem label="macOS / Linux">
+    ```bash
+    curl -fsSL https://archcore.ai/install.sh | sh
+    ```
+  </TabItem>
+  <TabItem label="Homebrew">
+    ```bash
+    brew install archcore-ai/tap/archcore
+    ```
+  </TabItem>
+</Tabs>
+
+Verify it works:
+
+```bash
+archcore --version
+```
+
+## Initialize Your Project
+
+```bash
+cd your-project
+archcore init
+```
+
+This does three things:
+1. Creates `.archcore/` directory with `settings.json`
+2. Auto-detects your coding agents (Claude Code, Cursor, Copilot, etc.)
+3. Installs MCP server config and session hooks for detected agents
+
+## Create Your First Document
+
+The easiest way is to ask your AI agent:
+
+> "Create an ADR about using PostgreSQL for our database"
+
+The agent will use the `create_document` MCP tool and generate a document from the ADR template with the proper structure, frontmatter, and required sections.
+
+You can also create documents manually:
+
+```bash
+mkdir -p .archcore/database
+```
+
+Create `.archcore/database/use-postgres.adr.md`:
+
+```markdown
+---
+title: Use PostgreSQL as Primary Database
+status: accepted
+---
+
+## Context
+
+We need a reliable relational database for our application.
+
+## Decision
+
+Use PostgreSQL for all persistent data storage.
+
+## Alternatives Considered
+
+- MySQL — fewer advanced features (JSONB, arrays, CTEs)
+- MongoDB — doesn't fit our relational data model
+
+## Consequences
+
+### Positive
+- Strong ACID guarantees
+- Excellent ecosystem and tooling
+- JSONB for semi-structured data when needed
+
+### Negative
+- Requires schema migrations for changes
+- Horizontal scaling is more complex than NoSQL
+```
+
+## Validate
+
+Check that everything is structured correctly:
+
+```bash
+archcore validate
+```
+
+## Use With Your Agent
+
+Start a conversation with your coding agent. It now has access to your `.archcore/` documents through MCP.
+
+Try asking:
+- *"What architectural decisions have been made?"*
+- *"Create a rule for database migrations based on the PostgreSQL ADR"*
+- *"List all documents and their relations"*
+
+## Update
+
+To update to the latest version:
+
+```bash
+archcore update
+```
+
+## What's Next
+
+- [How It Works](/concepts/how-it-works/) — understand the full workflow
+- [Document Types](/concepts/document-types/) — learn all 10 types and when to use each
+- [CLI Commands](/reference/cli-commands/) — full reference for the CLI
