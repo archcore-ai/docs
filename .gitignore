@@ -21,3 +21,4 @@ pnpm-debug.log*
 .DS_Store
 
 .claude/settings.local.json
+.playwright-mcp/
