@@ -7,6 +7,7 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			title: 'archcore',
+			favicon: '/favicon.ico',
 			logo: {
 				light: './src/assets/logo-light.png',
 				dark: './src/assets/logo-dark.png',
