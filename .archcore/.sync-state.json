@@ -91,6 +91,76 @@
       "source": "adding-docs-page.guide.md",
       "target": "docs-from-cli-context.rule.md",
       "type": "depends_on"
+    },
+    {
+      "source": "adding-changelog-entry.guide.md",
+      "target": "adding-docs-page.guide.md",
+      "type": "related"
+    },
+    {
+      "source": "adding-changelog-entry.guide.md",
+      "target": "archcore-docs-site.doc.md",
+      "type": "related"
+    },
+    {
+      "source": "adding-changelog-entry.guide.md",
+      "target": "content-structure.rule.md",
+      "type": "related"
+    },
+    {
+      "source": "adding-changelog-entry.guide.md",
+      "target": "docs-from-cli-context.rule.md",
+      "type": "related"
+    },
+    {
+      "source": "adding-changelog-entry.guide.md",
+      "target": "docs-stack.doc.md",
+      "type": "related"
+    },
+    {
+      "source": "adding-changelog-entry.guide.md",
+      "target": "update-docs-from-cli.task-type.md",
+      "type": "related"
+    },
+    {
+      "source": "changelog-content-structure.rule.md",
+      "target": "adding-changelog-entry.guide.md",
+      "type": "related"
+    },
+    {
+      "source": "changelog-content-structure.rule.md",
+      "target": "adding-docs-page.guide.md",
+      "type": "related"
+    },
+    {
+      "source": "changelog-content-structure.rule.md",
+      "target": "archcore-docs-site.doc.md",
+      "type": "related"
+    },
+    {
+      "source": "changelog-content-structure.rule.md",
+      "target": "content-structure.rule.md",
+      "type": "related"
+    },
+    {
+      "source": "changelog-content-structure.rule.md",
+      "target": "docs-from-cli-context.rule.md",
+      "type": "related"
+    },
+    {
+      "source": "changelog-content-structure.rule.md",
+      "target": "docs-stack.doc.md",
+      "type": "related"
+    },
+    {
+      "source": "changelog-content-structure.rule.md",
+      "target": "update-docs-from-cli.task-type.md",
+      "type": "related"
+    },
+    {
+      "source": "adding-changelog-entry.guide.md",
+      "target": "changelog-content-structure.rule.md",
+      "type": "depends_on"
     }
   ]
 }

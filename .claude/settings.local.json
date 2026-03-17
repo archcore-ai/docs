@@ -13,7 +13,12 @@
       "Bash(tree:*)",
       "mcp__archcore__list_relations",
       "mcp__archcore__add_relation",
-      "Bash(npm run:*)"
+      "Bash(npm run:*)",
+      "mcp__archcore__get_document",
+      "mcp__playwright__browser_press_key",
+      "mcp__playwright__browser_select_option",
+      "Bash(npx astro:*)",
+      "mcp__playwright__browser_close"
     ]
   },
   "enableAllProjectMcpServers": true,

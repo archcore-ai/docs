@@ -27,11 +27,19 @@ The site is organized into 4 sidebar sections that map to the user journey:
 | Integrations | Agent connectivity | MCP Server, Supported Agents, Hooks |
 | Reference | Lookup material | CLI Commands, Document Format, Configuration |
 
+### Changelog
+
+The changelog lives outside the 4-section sidebar structure as a standalone content collection (`src/content/changelog/`). It is accessed via the "Changelog" link in the site header. Changelog pages use Starlight's standard docs template (sidebar and TOC visible) but entries are not listed in the sidebar. See the `adding-changelog-entry` guide and `changelog-content-structure` rule for details.
+
 ## Key Files
 
 - @astro.config.mjs — sidebar configuration and Starlight options
 - @src/styles/custom.css — theme tokens and custom styling
 - @src/content/docs/ — all documentation content
+- @src/content/changelog/ — changelog entries (separate content collection)
+- @src/pages/changelog/ — changelog page templates (listing + individual entry)
+- @src/components/ChangelogEntry.astro — changelog entry layout component
+- @src/components/HeaderLinks.astro — header "Changelog" link + social icons
 - @package.json — dependencies and scripts
 
 ## Examples

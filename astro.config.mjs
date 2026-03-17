@@ -11,6 +11,9 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			title: 'archcore',
+			components: {
+				SocialIcons: './src/components/HeaderLinks.astro',
+			},
 			favicon: '/favicon.ico',
 			logo: {
 				light: './src/assets/logo-light.png',

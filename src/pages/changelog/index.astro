@@ -1,0 +1,22 @@
+---
+import { getCollection } from 'astro:content';
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import ChangelogEntry from '../../components/ChangelogEntry.astro';
+
+const entries = (await getCollection('changelog')).sort(
+	(a, b) => b.data.date.getTime() - a.data.date.getTime()
+);
+---
+
+<StarlightPage
+	frontmatter={{
+		title: 'Changelog',
+		description: 'All notable changes to Archcore.',
+	}}
+>
+	<div class="changelog-list">
+		{entries.map((entry) => (
+			<ChangelogEntry entry={entry} />
+		))}
+	</div>
+</StarlightPage>
