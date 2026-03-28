@@ -1,9 +1,9 @@
 ---
 title: What Is Archcore?
-description: Archcore gives AI coding agents a shared architectural memory — structured decisions, rules, and patterns that persist across sessions and tools.
+description: Git-native context for AI coding agents. Structure decisions, rules, plans, and guides in your repo so Claude Code, Cursor, Copilot, and other agents work with stronger project context.
 ---
 
-Archcore is a **shared architectural memory for AI coding agents**. It turns scattered project knowledge — decisions, rules, patterns, plans — into structured documents that agents discover, read, and follow automatically.
+Archcore is **git-native context for AI coding agents**. It turns scattered project knowledge — decisions, rules, patterns, plans — into structured documents that agents discover, read, and follow automatically.
 
 ## The Problem
 
@@ -37,7 +37,7 @@ your-project/
 
 Each file suffix (`.adr.md`, `.guide.md`, `.task-type.md`) indicates its [document type](/concepts/document-types/).
 
-When an agent starts a session, Archcore's [MCP server](/integrations/mcp-server/) makes all documents available. The agent can query, read, create, and link documents without leaving the conversation.
+When an agent starts a session, Archcore's [MCP server](/agents/mcp-server/) makes all documents available. The agent can query, read, create, and link documents without leaving the conversation.
 
 ## Why Not Just Flat Instruction Files?
 
@@ -50,11 +50,11 @@ When an agent starts a session, Archcore's [MCP server](/integrations/mcp-server
 | **Lifecycle** | No versioning beyond git diff | Draft → accepted → rejected status |
 | **Connections** | No links between concepts | Explicit relations between documents |
 
-[Read the full comparison →](/getting-started/why-not-flat-files/)
+[Read the full comparison →](/start/vs-flat-files/)
 
 ## What You Get After Setup
 
-After running [`archcore init`](/getting-started/quick-start/), your agents can:
+After running [`archcore init`](/start/quick-start/), your agents can:
 
 - **Find relevant context** — query decisions, rules, and patterns by type or topic
 - **Follow team standards** — read coding rules and how-to guides automatically
@@ -64,7 +64,6 @@ After running [`archcore init`](/getting-started/quick-start/), your agents can:
 
 ## Next Steps
 
-- **[Quick Start](/getting-started/quick-start/)** — install and set up in 2 minutes
-- **[First 10 Minutes](/getting-started/first-10-minutes/)** — what to do after setup, with expected results
-- **[Why Not Flat Files?](/getting-started/why-not-flat-files/)** — detailed comparison with CLAUDE.md, .cursorrules, and other approaches
-- **[Capture Architecture Decisions](/use-cases/architecture-decisions/)** — the most common starting point for teams
+- **[Quick Start](/start/quick-start/)** — install and set up in 2 minutes
+- **[Flat Files vs Archcore](/start/vs-flat-files/)** — detailed comparison with CLAUDE.md, .cursorrules, and other approaches
+- **[Use Cases](/concepts/use-cases/)** — the most common starting points for teams

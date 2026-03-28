@@ -11,13 +11,13 @@ status: accepted
 
 ## Steps
 
-1. **Pick the correct section** — Determine which of the 7 sections the page belongs to per the content-structure rule: Start Here, Use Cases, Guides, Concepts, Integrations, Reference, or Troubleshooting.
+1. **Pick the correct section** — Determine which of the 4 sections the page belongs to per the content-structure rule: Get Started, Concepts, Agents & Tools, or Reference.
 
 2. **Create the file** — Add a new `.md` file in the appropriate directory:
    ```
    src/content/docs/<section>/your-page.md
    ```
-   Section directories: `getting-started/`, `use-cases/`, `guides/`, `concepts/`, `integrations/`, `reference/`, `troubleshooting/`.
+   Section directories: `start/`, `concepts/`, `agents/`, `reference/`. The Introduction page (`index.md`) lives at the root of `src/content/docs/`.
 
 3. **Add Starlight frontmatter** — Every page requires at minimum:
    ```yaml

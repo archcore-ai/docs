@@ -55,7 +55,7 @@ Every document has a status: `draft`, `accepted`, or `rejected`. Superseded deci
 
 ### Cross-agent, agent-native
 
-One `.archcore/` directory works with [Claude Code, Cursor, Copilot, Gemini CLI, and more](/integrations/supported-agents/). Agents don't just read — they query by type and status, create documents from templates, and add relations through [MCP](/integrations/mcp-server/).
+One `.archcore/` directory works with [Claude Code, Cursor, Copilot, Gemini CLI, and more](/agents/supported-agents/). Agents don't just read — they query by type and status, create documents from templates, and add relations through [MCP](/agents/mcp-server/).
 
 ## When to switch
 
@@ -78,6 +78,6 @@ One `.archcore/` directory works with [Claude Code, Cursor, Copilot, Gemini CLI,
 
 ## Next steps
 
-- [Quick Start](/getting-started/quick-start/) — install and set up your first project
+- [Quick Start](/start/quick-start/) — install and set up your first project
 - [Document Types](/concepts/document-types/) — learn all 18 types and when to use each
-- [Philosophy](/concepts/philosophy/) — the design principles behind Archcore
+- [How It Works](/concepts/how-it-works/) — the design principles behind Archcore

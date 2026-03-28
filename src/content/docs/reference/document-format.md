@@ -5,50 +5,7 @@ description: File naming conventions, YAML frontmatter fields, content structure
 
 ## File Naming
 
-Every document follows the pattern:
-
-```
-<slug>.<type>.md
-```
-
-### Slug Rules
-
-- Lowercase letters and numbers only
-- Words separated by hyphens
-- Must match: `^[a-z0-9]+(-[a-z0-9]+)*$`
-
-**Valid:** `jwt-strategy`, `use-postgres`, `api-v2-migration`
-
-**Invalid:** `JWT_Strategy`, `use postgres`, `my.decision`
-
-### Valid Types
-
-```
-adr, rfc, rule, guide, spec, doc, prd, idea, plan, mrd, brd, urd, brs, strs, syrs, srs, task-type, cpat
-```
-
-### Examples
-
-```
-use-postgres.adr.md
-api-versioning.rfc.md
-error-handling.rule.md
-ci-cd-setup.guide.md
-webhook-delivery.spec.md
-api-endpoints.doc.md
-auth-redesign.prd.md
-caching-layer.idea.md
-q1-migration.plan.md
-market-analysis.mrd.md
-revenue-model.brd.md
-onboarding-flow.urd.md
-business-reqs.brs.md
-stakeholder-reqs.strs.md
-system-reqs.syrs.md
-software-reqs.srs.md
-api-endpoint-creation.task-type.md
-callbacks-to-async.cpat.md
-```
+Every document follows the `<slug>.<type>.md` pattern. See [Documents & Layout](/concepts/documents/) for full naming rules, valid types, and directory organization.
 
 ## Frontmatter
 

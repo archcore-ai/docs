@@ -6,8 +6,24 @@ import starlight from '@astrojs/starlight';
 export default defineConfig({
 	site: 'https://docs.archcore.ai',
 	redirects: {
-		'/getting-started/installation/': '/getting-started/quick-start/',
-		'/concepts/how-it-works/': '/concepts/philosophy/',
+		'/getting-started/installation/': '/start/quick-start/',
+		'/getting-started/quick-start/': '/start/quick-start/',
+		'/getting-started/first-10-minutes/': '/start/quick-start/',
+		'/getting-started/why-not-flat-files/': '/start/vs-flat-files/',
+		'/concepts/philosophy/': '/concepts/how-it-works/',
+		'/concepts/context-layers/': '/concepts/how-it-works/',
+		'/concepts/directory-structure/': '/concepts/documents/',
+		'/use-cases/architecture-decisions/': '/concepts/use-cases/',
+		'/use-cases/coding-rules/': '/concepts/use-cases/',
+		'/use-cases/shared-project-memory/': '/concepts/use-cases/',
+		'/use-cases/implementation-plans/': '/concepts/use-cases/',
+		'/integrations/mcp-server/': '/agents/mcp-server/',
+		'/integrations/supported-agents/': '/agents/supported-agents/',
+		'/integrations/hooks/': '/agents/mcp-server/',
+		'/reference/cli-commands/': '/agents/cli/',
+		'/troubleshooting/agent-not-seeing-documents/': '/reference/troubleshooting/',
+		'/troubleshooting/mcp-not-starting/': '/reference/troubleshooting/',
+		'/troubleshooting/validation-errors/': '/reference/troubleshooting/',
 	},
 	integrations: [
 		starlight({
@@ -21,7 +37,7 @@ export default defineConfig({
 				dark: './src/assets/logo-dark.png',
 				alt: 'archcore logo',
 			},
-			description: 'Shared architectural memory for AI coding agents',
+			description: 'Structure decisions, rules, plans, and guides in your repo so Claude Code, Cursor, Copilot, and other agents work with stronger project context.',
 			head: [
 				{
 					tag: 'meta',
@@ -32,6 +48,26 @@ export default defineConfig({
 					attrs: { property: 'og:type', content: 'website' },
 				},
 				{
+					tag: 'meta',
+					attrs: { property: 'og:title', content: 'archcore — Git-native context for AI coding agents' },
+				},
+				{
+					tag: 'meta',
+					attrs: { property: 'og:description', content: 'Turn scattered repo knowledge into structured context that AI coding agents can find, reuse, and follow.' },
+				},
+				{
+					tag: 'meta',
+					attrs: { name: 'twitter:card', content: 'summary_large_image' },
+				},
+				{
+					tag: 'meta',
+					attrs: { name: 'twitter:title', content: 'archcore — Git-native context for AI coding agents' },
+				},
+				{
+					tag: 'meta',
+					attrs: { name: 'twitter:description', content: 'Structure decisions, rules, plans, and guides in your repo so Claude Code, Cursor, Copilot, and other agents work with stronger project context.' },
+				},
+				{
 					tag: 'script',
 					attrs: { type: 'application/ld+json' },
 					content: JSON.stringify({
@@ -39,7 +75,7 @@ export default defineConfig({
 						'@type': 'WebSite',
 						name: 'Archcore',
 						url: 'https://docs.archcore.ai',
-						description: 'Shared architectural memory for AI coding agents',
+						description: 'Structure decisions, rules, plans, and guides in your repo so Claude Code, Cursor, Copilot, and other agents work with stronger project context.',
 						publisher: {
 							'@type': 'Organization',
 							name: 'Archcore',
@@ -57,56 +93,38 @@ export default defineConfig({
 			customCss: ['./src/styles/custom.css'],
 			sidebar: [
 				{
-					label: 'Start Here',
+					label: 'Get Started',
 					items: [
-						{ label: 'What Is Archcore?', slug: '' },
-						{ label: 'Quick Start', slug: 'getting-started/quick-start' },
-						{ label: 'First 10 Minutes', slug: 'getting-started/first-10-minutes' },
-						{ label: 'Why Not Flat Files?', slug: 'getting-started/why-not-flat-files' },
+						{ label: 'Introduction', slug: '' },
+						{ label: 'Quick Start', slug: 'start/quick-start' },
+						{ label: 'Flat Files vs Archcore', slug: 'start/vs-flat-files' },
 					],
 				},
 				{
 					label: 'Concepts',
 					items: [
-						{ label: 'Philosophy', slug: 'concepts/philosophy' },
-						{ label: 'Context Layers', slug: 'concepts/context-layers' },
+						{ label: 'How It Works', slug: 'concepts/how-it-works' },
 						{ label: 'Document Types', slug: 'concepts/document-types' },
-						{ label: 'Directory Structure', slug: 'concepts/directory-structure' },
+						{ label: 'Documents & Layout', slug: 'concepts/documents' },
 						{ label: 'Relations', slug: 'concepts/relations' },
+						{ label: 'Use Cases', slug: 'concepts/use-cases' },
 					],
 				},
 				{
-					label: 'Use Cases',
+					label: 'Agents & Tools',
 					items: [
-						{ label: 'Capture Architecture Decisions', slug: 'use-cases/architecture-decisions' },
-						{ label: 'Keep Coding Rules Reusable', slug: 'use-cases/coding-rules' },
-						{ label: 'Build Shared Project Memory', slug: 'use-cases/shared-project-memory' },
-						{ label: 'Plan Implementation Work', slug: 'use-cases/implementation-plans' },
-					],
-				},
-				{
-					label: 'Integrations',
-					items: [
-						{ label: 'MCP Server', slug: 'integrations/mcp-server' },
-						{ label: 'Supported Agents', slug: 'integrations/supported-agents' },
-						{ label: 'Hooks', slug: 'integrations/hooks' },
+						{ label: 'Supported Agents', slug: 'agents/supported-agents' },
+						{ label: 'MCP Server', slug: 'agents/mcp-server' },
+						{ label: 'CLI Commands', slug: 'agents/cli' },
 					],
 				},
 				{
 					label: 'Reference',
 					items: [
-						{ label: 'CLI Commands', slug: 'reference/cli-commands' },
-						{ label: 'Document Format', slug: 'reference/document-format' },
-						{ label: 'Configuration', slug: 'reference/configuration' },
 						{ label: 'MCP Tools', slug: 'reference/mcp-tools' },
-					],
-				},
-				{
-					label: 'Troubleshooting',
-					items: [
-						{ label: 'Agent Cannot See Documents', slug: 'troubleshooting/agent-not-seeing-documents' },
-						{ label: 'MCP Server Not Starting', slug: 'troubleshooting/mcp-not-starting' },
-						{ label: 'Validation Errors', slug: 'troubleshooting/validation-errors' },
+						{ label: 'Configuration', slug: 'reference/configuration' },
+						{ label: 'Document Format', slug: 'reference/document-format' },
+						{ label: 'Troubleshooting', slug: 'reference/troubleshooting' },
 					],
 				},
 			],

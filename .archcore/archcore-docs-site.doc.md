@@ -7,7 +7,7 @@ status: accepted
 
 Documentation site for the [Archcore CLI](https://github.com/archcore-ai/cli), deployed at **docs.archcore.ai**.
 
-Archcore is a System Context Platform that keeps humans and AI in sync with your system. This site provides getting-started guides, concept explanations, integration docs, and CLI reference.
+Archcore is git-native context for AI coding agents. It helps teams structure decisions, rules, plans, and guides inside the repository so agents can work with stronger project context. This site provides getting-started guides, concept explanations, agent setup docs, and CLI/MCP reference.
 
 ## Architecture
 
@@ -18,14 +18,14 @@ Archcore is a System Context Platform that keeps humans and AI in sync with your
 
 ## Sections
 
-The site is organized into 4 sidebar sections that map to the user journey:
+The site is organized into 4 sidebar sections (15 pages total):
 
-| Section | Purpose | Examples |
-|---------|---------|----------|
-| Getting Started | Onboarding flow | Introduction, Quick Start |
-| Core Concepts | Mental model | Philosophy, Context Layers, Document Types, Directory Structure, Relations |
-| Integrations | Agent connectivity | MCP Server, Supported Agents, Hooks |
-| Reference | Lookup material | CLI Commands, Document Format, Configuration, MCP Tools |
+| Section | Directory | Purpose | Pages |
+|---------|-----------|---------|-------|
+| Get Started | `start/` + root | Onboarding flow | Introduction, Quick Start, Flat Files vs Archcore |
+| Concepts | `concepts/` | Mental model and use cases | How It Works, Document Types, Documents & Layout, Relations, Use Cases |
+| Agents & Tools | `agents/` | Agent connectivity and CLI | Supported Agents, MCP Server, CLI Commands |
+| Reference | `reference/` | Lookup material | MCP Tools, Configuration, Document Format, Troubleshooting |
 
 ### Changelog
 
@@ -33,7 +33,7 @@ The changelog lives outside the 4-section sidebar structure as a standalone cont
 
 ## Key Files
 
-- @astro.config.mjs — sidebar configuration and Starlight options
+- @astro.config.mjs — sidebar configuration, redirects, and Starlight options
 - @src/styles/custom.css — theme tokens and custom styling
 - @src/content/docs/ — all documentation content
 - @src/content/changelog/ — changelog entries (separate content collection)

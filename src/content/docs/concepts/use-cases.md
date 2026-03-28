@@ -1,0 +1,198 @@
+---
+title: Use Cases
+description: Common ways teams use Archcore — from recording decisions to defining coding rules and planning work.
+---
+
+Archcore gives your team a single place to capture decisions, standards, plans, and project knowledge — all as structured markdown files that every AI agent discovers automatically through MCP. Here are the most common ways teams use it.
+
+## Record Architecture Decisions
+
+Your team makes technical decisions every week — database choices, auth strategies, API design patterns. Without a structured record, these decisions live in Slack threads, PR comments, and people's heads. When an agent starts a new session, none of that context exists.
+
+Create an ADR in Archcore, and every agent discovers it automatically. No copy-pasting into prompt files.
+
+Ask your agent:
+
+> "Create an ADR for using PostgreSQL as our primary database"
+
+The agent calls `create_document` and produces a structured record:
+
+```markdown
+---
+title: Use PostgreSQL as Primary Database
+status: accepted
+---
+
+## Context
+We need a relational database with strong ACID guarantees
+and mature tooling for our multi-service architecture.
+
+## Decision
+Use PostgreSQL 16 for all persistent data storage.
+
+## Alternatives Considered
+- MySQL — fewer advanced features (JSONB, arrays)
+- MongoDB — doesn't fit our relational data model
+
+## Consequences
+### Positive
+- Strong ACID compliance
+- Excellent JSON support via JSONB
+### Negative
+- Schema migrations required for changes
+```
+
+The next time any agent works on database-related code, it queries `.archcore/` and finds this decision. It knows PostgreSQL is the standard — without you repeating it.
+
+Decisions rarely stand alone. They produce rules, and rules produce guides:
+
+```
+use-postgres.adr.md
+  └── related → migration-format.rule.md
+                  └── related → run-migrations.guide.md
+```
+
+The ADR records *why* PostgreSQL. The rule defines *how* to write migrations. The guide walks through the steps. Agents follow the full chain.
+
+## Define Coding Rules
+
+Your team has coding standards — error formats, naming conventions, test patterns, commit message rules. Without Archcore, you repeat these in every `CLAUDE.md`, `.cursorrules`, and agent prompt. When a standard changes, you update multiple files across multiple tools.
+
+Create a rule document once, and every agent picks it up through MCP — regardless of which tool your teammates use.
+
+```markdown
+---
+title: API Error Response Format
+status: accepted
+---
+
+## Rule
+
+1. ALL API errors MUST return JSON with `code`, `message`, and `request_id`
+2. Error codes MUST use UPPER_SNAKE_CASE
+3. HTTP status codes MUST match error semantics
+
+## Rationale
+
+Consistent error format enables clients to handle errors programmatically
+and simplifies debugging across services.
+
+## Examples
+
+### Good
+
+{ "code": "USER_NOT_FOUND", "message": "No user with ID 42", "request_id": "req_abc123" }
+
+### Bad
+
+{ "error": "not found" }
+
+## Enforcement
+
+Apply to all handlers in @src/api/. Verify in integration tests.
+```
+
+Unlike free-text instruction files, rule documents have required sections:
+
+- **Rule statements** — imperative, unambiguous requirements
+- **Rationale** — why the rule exists (agents use this to apply it in edge cases)
+- **Good/Bad examples** — concrete patterns to follow and avoid
+- **Enforcement** — where and how the rule applies
+
+This structure gives agents enough context to apply rules correctly, not just literally. A rule often originates from an architectural decision — use [relations](/concepts/relations/) to make that connection explicit.
+
+## Plan Implementation Work
+
+You need to plan a feature build or a migration — phases, tasks, dependencies, acceptance criteria. Without Archcore, plans live in project management tools or Google Docs that agents cannot access. Every session, you re-explain what needs to happen and in what order.
+
+Create a plan document, and agents see the full scope of work:
+
+```markdown
+---
+title: Migrate User Data to PostgreSQL
+status: draft
+---
+
+## Goal
+
+Move all user data from MongoDB to PostgreSQL with zero downtime.
+
+## Tasks
+
+### Phase 1 — Schema and Migration Scripts
+- [ ] Design PostgreSQL schema for users, profiles, and sessions
+- [ ] Write migration scripts with rollback support
+- [ ] Set up dual-write layer in @src/db/
+
+### Phase 2 — Shadow Reads
+- [ ] Route read queries to both databases
+- [ ] Compare results and log discrepancies
+
+### Phase 3 — Cutover
+- [ ] Switch primary reads to PostgreSQL
+- [ ] Remove dual-write layer
+
+## Acceptance Criteria
+
+- All user queries return identical results from PostgreSQL
+- Rollback tested and documented
+
+## Dependencies
+
+- Depends on: use-postgres.adr.md (database decision)
+- Depends on: migration-format.rule.md (migration standards)
+```
+
+Plans sit between vision and implementation. Relations make the connections explicit:
+
+```
+auth-redesign.prd.md ←── implements ── auth-redesign.plan.md
+                                              │
+                                              ├── depends_on → jwt-strategy.adr.md
+                                              └── depends_on → auth-rules.rule.md
+```
+
+You don't have to write plans from scratch. Ask your agent:
+
+> "Create an implementation plan for the auth redesign based on our PRD"
+
+The agent reads the PRD, structures tasks into phases, and links the plan back to its source requirements.
+
+## Build Project Context
+
+Multiple developers on your team use AI agents. Each agent starts fresh every session — no memory of past decisions, no awareness of standards. Without git-native context, every developer maintains their own instruction files and knowledge stays fragmented.
+
+The `.archcore/` directory lives in your repository. Every developer who clones the repo gets the same project context. Every agent — Claude Code, Cursor, Copilot, Gemini CLI — reads from the same source through MCP.
+
+```
+your-project/
+├── .archcore/
+│   ├── auth/
+│   │   ├── jwt-strategy.adr.md
+│   │   └── auth-redesign.prd.md
+│   ├── api/
+│   │   ├── error-format.rule.md
+│   │   └── rest-conventions.guide.md
+│   └── onboarding-flow.task-type.md
+└── src/
+```
+
+No syncing between tools. No copy-pasting between prompt files. One directory, version-controlled with your code.
+
+Every document you add makes future agent sessions more productive. The lifecycle flows naturally:
+
+```
+idea → prd → plan → adr → rule → guide → task-type
+```
+
+An **idea** becomes a **PRD** with requirements. The PRD produces a **plan** with tasks. Implementation produces **ADRs** for decisions made along the way. Decisions crystallize into **rules**. Rules get **guides** that explain how to follow them. Repeated work becomes **task-types** that agents execute consistently.
+
+Because documents are plain markdown files, they go through the same workflow as code — branch, review in a PR, merge, and track with `git log`. Your project context lives where your code lives.
+
+## What's Next
+
+- [Quick Start](/start/quick-start/) — set up Archcore in under 2 minutes
+- [How It Works](/concepts/how-it-works/) — the design principles behind Archcore
+- [Document Types](/concepts/document-types/) — formats and required sections for each type
+- [Relations](/concepts/relations/) — how to link documents into a knowledge graph
+- [MCP Server](/agents/mcp-server/) — connect agents to your project context
