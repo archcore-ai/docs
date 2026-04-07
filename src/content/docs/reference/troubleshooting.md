@@ -178,7 +178,7 @@ The agent connects to MCP successfully but reports zero documents. This usually 
 **Check:**
 
 ```bash
-archcore validate
+archcore status
 ```
 
 This reports any issues with file naming, frontmatter, or document structure.
@@ -189,7 +189,7 @@ This reports any issues with file naming, frontmatter, or document structure.
 - Missing or invalid YAML frontmatter (`title` and `status` are required)
 - Unknown document type in the filename
 
-**Fix:** Correct the issues reported by `archcore validate`. See [Validation Errors](#validation-errors) below for detailed guidance on each error type.
+**Fix:** Correct the issues reported by `archcore status`. See [Validation Errors](#validation-errors) below for detailed guidance on each error type.
 
 ## MCP Server Not Starting
 
@@ -238,7 +238,7 @@ archcore mcp install
 
 ## Validation Errors
 
-`archcore validate` checks every document in `.archcore/` for correct naming, structure, and frontmatter. This section explains each error you might see and how to fix it.
+`archcore status` checks every document in `.archcore/` for correct naming, structure, and frontmatter. This section explains each error you might see and how to fix it.
 
 ### Invalid filename
 
@@ -343,13 +343,13 @@ status: accepted
 
 **Why it happens:** You deleted or renamed a document, but the relation referencing it still exists in `.sync-state.json`. The relation's target path no longer matches any file.
 
-**Fix:** Run validate with the `--fix` flag:
+**Fix:** Run doctor with the `--fix` flag:
 
 ```bash
-archcore validate --fix
+archcore doctor --fix
 ```
 
-This automatically removes orphaned relations from the manifest and saves the updated `.sync-state.json`. No manual editing needed.
+This automatically removes orphaned relations from the manifest before running checks and saves the updated `.sync-state.json`. No manual editing needed.
 
 ### Invalid tags
 
@@ -415,9 +415,9 @@ status: draft
 
 ### Using --fix
 
-`archcore validate --fix` automates what it can:
+`archcore doctor --fix` automates what it can:
 
-- Removes orphaned relations from `.sync-state.json`
+- Removes orphaned relations from `.sync-state.json` before running checks
 - Saves the cleaned manifest
 
 It does **not** auto-fix:
@@ -427,10 +427,10 @@ It does **not** auto-fix:
 - Unknown document types (you need to rename the file)
 - Invalid YAML syntax (you need to fix the markup)
 
-For a full project health check beyond validation, run:
+For a full project health check, run:
 
 ```bash
 archcore doctor
 ```
 
-This adds checks for `settings.json`, MCP configuration, and server reachability on top of the standard validation. See [CLI Reference](/agents/cli/) for details.
+This checks `settings.json`, document structure, MCP configuration, and server reachability in one pass. See [CLI Reference](/agents/cli/) for details.

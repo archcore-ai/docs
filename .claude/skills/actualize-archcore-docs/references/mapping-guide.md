@@ -11,7 +11,7 @@ This reference maps CLI `.archcore/` document types and topics to their correspo
 | Relations (implements, extends, depends_on, related) | `concepts/relations.md` | Core Concepts |
 | Directory structure / file organization | `concepts/directory-structure.md` | Core Concepts |
 | Philosophy / design principles | `concepts/philosophy.md` | Core Concepts |
-| CLI commands (init, validate, doctor, config, mcp, hooks, update) | `reference/cli-commands.md` | Reference |
+| CLI commands (init, status, doctor, config, mcp, hooks, update) | `reference/cli-commands.md` | Reference |
 | Configuration / settings.json | `reference/configuration.md` | Reference |
 | Document format / frontmatter schema / naming | `reference/document-format.md` | Reference |
 | MCP tools (list_documents, get_document, create_document, etc.) | `reference/mcp-tools.md` | Reference |

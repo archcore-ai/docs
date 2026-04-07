@@ -31,7 +31,7 @@ The agent uses the `add_relation` MCP tool with source, target, and relation typ
 
 ### Via CLI
 
-Relations are validated with `archcore validate`. Orphaned relations (pointing to documents that no longer exist) are flagged and can be auto-removed with `--fix`.
+Relations are validated with `archcore status`. Orphaned relations (pointing to documents that no longer exist) are flagged and can be auto-removed with `archcore doctor --fix`.
 
 ## Viewing Relations
 

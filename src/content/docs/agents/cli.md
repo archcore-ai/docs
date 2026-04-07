@@ -22,12 +22,12 @@ If no agents are detected, falls back to Claude Code configuration.
 
 ---
 
-## archcore validate
+## archcore status
 
-Validate `.archcore/` structure and documents.
+Check `.archcore/` structure and document health.
 
 ```bash
-archcore validate [--fix]
+archcore status
 ```
 
 **Checks performed:**
@@ -41,20 +41,16 @@ archcore validate [--fix]
 - Sync manifest JSON structure
 - Orphaned relations (documents referenced but not on disk)
 
-**Flags:**
-
-| Flag    | Description                                      |
-| ------- | ------------------------------------------------ |
-| `--fix` | Auto-remove orphaned relations and save manifest |
+When orphaned relations are found, status hints: "Run 'archcore doctor --fix' to remove orphaned relations"
 
 ---
 
 ## archcore doctor
 
-Comprehensive health check.
+Comprehensive health check with optional fix.
 
 ```bash
-archcore doctor
+archcore doctor [--fix]
 ```
 
 Runs all validation checks plus:
@@ -62,6 +58,14 @@ Runs all validation checks plus:
 - Verifies `settings.json` exists and is valid
 - Checks server reachability (if server URL is configured)
 - Reports tag hygiene issues (invalid format, singleton tags that may be typos)
+
+Returns a non-zero exit code if any issues are found.
+
+**Flags:**
+
+| Flag    | Description                                                         |
+| ------- | ------------------------------------------------------------------- |
+| `--fix` | Remove orphaned relations from the manifest before running checks   |
 
 ---
 
